@@ -153,10 +153,14 @@
   <ItemGroup>
     <ClInclude Include="Creature.h" />
     <ClInclude Include="dungon_crawler.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Creature.cpp" />
     <ClCompile Include="dungeon_crawler.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

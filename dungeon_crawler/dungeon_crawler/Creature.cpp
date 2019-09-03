@@ -1,18 +1,41 @@
 #include "Creature.h"
 
+Creature::Creature() {
+	this->Health = 1;
+	this->Level = 1;
+	this->XP = 0;
+	this->Name;
 
 
-class Creature {
-	private : int Health;
-	private : int Level;
-	private: string Name;
-	
+}
 
-public:int getHealth() {
+int Creature::getHealth() {
 	return this->Health;
 }
-public:void setHealth(int h) {
+void Creature::setHealth(int h) {
 	this->Health = h;
 }
 
-};
+int Creature::getLevel() {
+	return this->Level;
+}
+
+void Creature::setLevel(int l) {
+	this->Level = l;
+}
+
+	  
+int Creature::getXP() {
+	return this->XP;
+}
+void Creature::setXP(int x) {
+	this->XP = x;
+}
+string Creature::getName() {
+	return this->Name;
+}
+ void  Creature::setName(string n) {
+	this->Name = n;
+}
+
+
