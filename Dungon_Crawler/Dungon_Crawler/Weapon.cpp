@@ -23,6 +23,9 @@ int Weapon::getDamage() {
 	return this->Damage;
 }
 void Weapon::setDamage(int d) {
+	if (d < 1) {
+		d = 1;
+	}
 	this->Damage = d;
 }
 int Weapon::getDefense() {
@@ -30,6 +33,9 @@ int Weapon::getDefense() {
 
 }
 void Weapon::setDefense(int d) {
+	if (d < 1) {
+		d = 1;
+	}
 	this->Defense = d;
 }
 bool Weapon::getTwoHanded() {
@@ -42,17 +48,34 @@ int Weapon::getSpeed() {
 	return this->Speed;
 }
 void Weapon::setSpeed(int s) {
+	if (s < 1) {
+		s = 1;
+	}
 	this->Speed = s;
 }
 int Weapon::getLevel() {
 	return this->Level;
 }
 void Weapon::setLevel(int l) {
+	if (l < 1) {
+		l = 1;
+	}
 	this->Level = l;
 }
 int Weapon::getRange() {
 	return this->Range;
 }
 void Weapon::setRange(int r) {
+	if (r < 1) {
+		r = 1;
+	}
 	this->Range = r;
 };
+
+
+WeaponTypes Weapon:: getType() {
+	return this->Type;
+}
+void Weapon::setType(WeaponTypes w) {
+	this->Type = w;
+}

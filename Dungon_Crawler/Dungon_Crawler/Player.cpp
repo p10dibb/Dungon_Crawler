@@ -177,3 +177,13 @@ void Player::DisplayDetails() {
 	cout << "Left: \t" << this->getLeft().getName() << endl;
 }
 
+
+int Player::getMoney() {
+	return this->Money;
+
+}
+void Player::setMoney(int m) {
+	this->Money = m;
+
+}
+

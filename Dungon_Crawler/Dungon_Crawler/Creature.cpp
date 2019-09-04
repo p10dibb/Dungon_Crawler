@@ -14,6 +14,9 @@ int Creature::getHealth() {
 	return this->Health;
 }
 void Creature::setHealth(int h) {
+	if (h < 1) {
+		h = 1;
+	}
 	this->Health = h;
 }
 
@@ -22,6 +25,9 @@ int Creature::getLevel() {
 }
 
 void Creature::setLevel(int l) {
+	if (l < 1) {
+		l = 1;
+	}
 	this->Level = l;
 }
 

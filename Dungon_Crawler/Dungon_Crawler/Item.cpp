@@ -30,6 +30,9 @@ int Item::getValue() {
 }
 
 void Item::setValue(int v) {
+	if (v < 1) {
+		v = 1;
+	}
 	this->Value = v;
 }
 
@@ -38,6 +41,9 @@ int Item::getWeight() {
 }
 
 void Item::setWeight(int w) {
+	if (w < 0) {
+		w = 0;
+	}
 	this->Weight = w;
 }
 
@@ -46,6 +52,9 @@ int Item::getStackSize() {
 }
 
 void Item::setStackSize(int s) {
+	if (s < 1) {
+		s = 1;
+	}
 	this->StackSize = s;
 }
 

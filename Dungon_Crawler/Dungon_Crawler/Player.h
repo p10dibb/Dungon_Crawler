@@ -31,6 +31,8 @@ private:
 	InventorySlot Inventory[40];
 	int FreeSlots;
 
+	int Money;
+
 public:
 	Player();
 
@@ -68,6 +70,9 @@ public:
 	void setInventory(InventorySlot i[40]);
 	int getFreeSlots();
 	void setFreeSlots(int f);
+
+	int getMoney();
+	void setMoney(int m);
 
 	void DisplayDetails();
 

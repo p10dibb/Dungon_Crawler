@@ -1,9 +1,10 @@
 #pragma once
 #include "Item.h"
 
-enum WeaponTypes{None,Sword, Shield, Dagger, Axe};
+enum WeaponTypes{None,Sword, Shield, Dagger, Axe, Claw};
 class Weapon :public Item {
 private:
+	WeaponTypes Type;
 	int Damage;
 	int Defense;
 	bool TwoHanded;
@@ -25,5 +26,8 @@ public:
 	void setLevel(int l);
 	int getRange();
 	void setRange(int r);
+
+	WeaponTypes getType();
+	void setType(WeaponTypes w);
 
 };
