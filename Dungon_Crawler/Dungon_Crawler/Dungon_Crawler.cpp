@@ -1,13 +1,21 @@
 #include "Dungon_Crawler.h"
 
 
+void Run() {
+	Player player = createPlayer();
 
-void main() {
-
-	Armor a;
-	a.setName("woot");
-	a.Display();
+	player.DisplayDetails();
 	system("pause");
+}
 
+Player createPlayer() {
+	Player ret;
 
+	string name;
+	cout << "choose a name:" << endl;
+	cin>> name;
+
+	ret.setName(name);
+
+	return ret;
 }

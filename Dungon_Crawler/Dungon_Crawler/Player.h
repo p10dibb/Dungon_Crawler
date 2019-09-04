@@ -69,5 +69,7 @@ public:
 	int getFreeSlots();
 	void setFreeSlots(int f);
 
+	void DisplayDetails();
+
 
 };

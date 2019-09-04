@@ -2,7 +2,7 @@
 #include "Creature.h"
 
 Creature::Creature() {
-	this->Health = 1;
+	this->Health = 100;
 	this->Level = 1;
 	this->XP = 0;
 	this->Name;

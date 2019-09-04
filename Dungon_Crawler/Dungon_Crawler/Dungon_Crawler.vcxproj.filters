@@ -13,45 +13,60 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Items">
+      <UniqueIdentifier>{8f81865d-6d17-4b54-b60b-5d3fab0d9906}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Creatures">
+      <UniqueIdentifier>{921c18fd-7f8a-4d63-88b3-cd582e6b5e60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Items">
+      <UniqueIdentifier>{7e3b214c-ad12-4fe3-bb86-4dcc221fcec6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Creatures">
+      <UniqueIdentifier>{15deb450-1734-4c26-a930-7fc14dd9507d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dungon_Crawler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Armor.h">
+      <Filter>Header Files\Items</Filter>
     </ClInclude>
     <ClInclude Include="Weapon.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files\Items</Filter>
     </ClInclude>
     <ClInclude Include="Creature.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Creatures</Filter>
     </ClInclude>
-    <ClInclude Include="Armor.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Creatures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dungon_Crawler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\Items</Filter>
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Creature.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Items</Filter>
     </ClCompile>
     <ClCompile Include="Armor.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="Creature.cpp">
+      <Filter>Source Files\Creatures</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

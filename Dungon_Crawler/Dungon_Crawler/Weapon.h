@@ -2,7 +2,7 @@
 #include "Item.h"
 
 enum WeaponTypes{None,Sword, Shield, Dagger, Axe};
-class Weapon :Item {
+class Weapon :public Item {
 private:
 	int Damage;
 	int Defense;

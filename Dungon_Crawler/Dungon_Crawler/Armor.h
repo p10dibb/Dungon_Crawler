@@ -2,7 +2,7 @@
 #include "Item.h"
 
 enum ArmorClass {  Light, Medium, Heavy };
-enum ArmorType {None,Helmet,Chest,Gloves, Pants, Boots};
+enum ArmorType {Nill,Helmet,Chest,Gloves, Pants, Boots};
 
 class Armor :public Item {
 friend class Item;

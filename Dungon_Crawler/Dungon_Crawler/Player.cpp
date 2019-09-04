@@ -3,21 +3,28 @@
 
 Player::Player() {
 	Creature();
-	this->ArmourRating = 0;
-	this->AttackPower = 0;
-	this->Speed = 0;
-	this->DefensRating = 0;
-	this->Stamina = 0;
-	this->Strength = 0;
+	this->ArmourRating = 5;
+	this->AttackPower = 5;
+	this->Speed = 5;
+	this->DefensRating = 5;
+	this->Stamina = 5;
+	this->Strength = 5;
 
 	this->Head =  Armor(0, 0, Helmet, Light);
+	this->Head.setName("Hat");
 	this->Torso = Armor(0, 0, Chest, Light);
+	this->Torso.setName("Shirt");
 	this->Legs = Armor(0, 0, Pants, Light);
+	this->Legs.setName("Pants");
 	this->Hands = Armor(0, 0, Gloves, Light);
+	this->Hands.setName("Basic");
 	this->Feet = Armor(0, 0, Boots, Light);
+	this->Feet.setName("sandals");
 
 	this->Right = Weapon(0, 0, false, 0, 0, 0);
+	this->Right.setName("Fist");
 	this->Left = Weapon(0, 0, false, 0, 0, 0);
+	this->Left.setName("Fist");
 
 	this->FreeSlots = 30;
 	
@@ -38,7 +45,7 @@ void Player::setAttackPower(int a) {
 	this->AttackPower = a;
 }
 int Player::getSpeed() {
-	this->Speed;
+	return this->Speed;
 }
 void Player::setSpeed(int s) {
 	this->Speed = s;
@@ -87,7 +94,7 @@ Armor Player::getHead() {
 	return this->Head;
 }
 int Player::setHead(Armor h) {
-	if (h.getType() == Helmet && h.getLevel <= this->getLevel()) {
+	if (h.getType() == Helmet && h.getLevel() <= this->getLevel()) {
 		this->Head = h;
 		return 1;
 	}
@@ -97,7 +104,7 @@ Armor Player::getTorso() {
 	return this->Torso;
 }
 int Player::setTorso(Armor c) {
-	if (c.getType() == Chest && c.getLevel <= this->getLevel()) {
+	if (c.getType() == Chest && c.getLevel() <= this->getLevel()) {
 		this->Head = c;
 		return 1;
 	}
@@ -108,7 +115,7 @@ Armor Player::getHands() {
 	return this->Hands;
 }
 int Player::setHands(Armor h) {
-	if (h.getType() == Gloves && h.getLevel <= this->getLevel()) {
+	if (h.getType() == Gloves && h.getLevel() <= this->getLevel()) {
 		this->Head = h;
 		return 1;
 	}
@@ -119,7 +126,7 @@ Armor Player::getLegs() {
 	return this->Legs;
 }
 int Player::setLegs(Armor p) {
-	if (p.getType() ==Pants && p.getLevel <= this->getLevel()) {
+	if (p.getType() ==Pants && p.getLevel() <= this->getLevel()) {
 		this->Head = p;
 		return 1;
 	}
@@ -129,7 +136,7 @@ Armor Player::getFeet() {
 	return this->Feet;
 }
 int Player::setFeet(Armor b) {
-	if (b.getType() == Boots && b.getLevel <= this->getLevel()) {
+	if (b.getType() == Boots && b.getLevel() <= this->getLevel()) {
 		this->Head = b;
 		return 1;
 	}
@@ -149,3 +156,24 @@ int Player::getFreeSlots() {
 void Player::setFreeSlots(int f) {
 	this->FreeSlots = f;
 }
+
+void Player::DisplayDetails() {
+	cout << "Name: \t" << this->getName() << endl;
+	cout << "Level: \t" << this->getLevel() << endl;
+	cout << "XP: \t" << this->getXP() << endl;
+	cout << "Health: \t" << this->getHealth() << endl;
+	cout << "Stamina: \t" << this->getStamina() << endl;
+	cout << "Attack: \t" << this->getAttackPower() << endl;
+	cout << "Defense: \t" << this->getDefenseRating() << endl;
+	cout << "Speed: \t" << this->getSpeed() << endl;
+	cout << "Armor: \t" << endl;
+	cout << "Head: \t" << this->getHead().getName() << endl;
+	cout << "Torso: \t" << this->getTorso().getName() << endl;
+	cout << "Hands: \t" << this->getHands().getName() << endl;
+	cout << "Legs: \t" << this->getLegs().getName() << endl;
+	cout << "Feet: \t" << this->getFeet().getName() << endl;
+	cout << "Weapon: " << endl;
+	cout << "Right: \t" << this->getRight().getName() << endl;
+	cout << "Left: \t" << this->getLeft().getName() << endl;
+}
+

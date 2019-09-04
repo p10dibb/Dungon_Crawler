@@ -6,7 +6,7 @@ Armor::Armor() {
 	Item();
 	this->Defense = 0;
 	this->Level = 0;
-	this->Type = None;
+	this->Type = Nill;
 	this->Class = Light;
 }
 Armor::Armor(int def, int lvl, ArmorType type, ArmorClass c) {
