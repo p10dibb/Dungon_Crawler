@@ -2,6 +2,7 @@
 #include "Creature.h"
 
 Creature::Creature() {
+	this->MaxHealth = 100;
 	this->Health = 100;
 	this->Level = 1;
 	this->XP = 0;
@@ -9,6 +10,16 @@ Creature::Creature() {
 
 
 }
+int Creature::getMaxHealth() {
+	return this->MaxHealth;
+}
+void Creature::setMaxHealth(int m) {
+	if (m < 1) {
+		m = 0;
+	}
+	this->MaxHealth = m;
+}
+
 
 int Creature::getHealth() {
 	return this->Health;
@@ -46,7 +57,7 @@ void  Creature::setName(string n) {
 }
 
 void Creature::Display() {
-	cout << "Name: " << this->Name << endl << "Level: " << Level << endl << "XP: " << this->XP << endl << "Health: " << this->Health << endl;
+	cout << "Name: \t" << this->Name << endl << "Level: \t" << Level << endl << "XP: \t" << this->XP << endl << "Health: \t" << this->Health << endl << "MaxHealth: \t" << this->MaxHealth << endl;
 
 }
 

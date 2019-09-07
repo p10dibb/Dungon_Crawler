@@ -1,6 +1,2 @@
-﻿  Dungon_Crawler.cpp
-c:\users\pauld\onedrive\desktop\cpts\gitkracken\dungon_crawler\dungon_crawler\dungon_crawler\dungon_crawler.cpp(5): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Main.cpp
-c:\users\pauld\onedrive\desktop\cpts\gitkracken\dungon_crawler\dungon_crawler\dungon_crawler\main.cpp(4): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  Generating Code...
+﻿  Spawner.cpp
   Dungon_Crawler.vcxproj -> C:\Users\pauld\OneDrive\Desktop\cpts\gitKracken\Dungon_Crawler\Dungon_Crawler\Debug\Dungon_Crawler.exe

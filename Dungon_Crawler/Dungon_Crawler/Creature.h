@@ -10,6 +10,7 @@ using namespace::std;
 class Creature {
 
 private:
+	int MaxHealth;
 	int Health;
 	int Level;
 	int XP;
@@ -17,6 +18,8 @@ private:
 
 public:
 	Creature();
+	int getMaxHealth();
+	void setMaxHealth(int m);
 	int getHealth();
 	void setHealth(int h);
 	int getLevel();

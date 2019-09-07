@@ -2,6 +2,12 @@
 #include "Item.h"
 
 enum WeaponTypes{None,Sword, Shield, Dagger, Axe, Claw};
+//None is basically nothing
+//sword =med speed, attack, def
+//shield = med speed, low attack, high defense
+//dagger =high speed, med damage,low defense
+//axe = low speed, high damage, med defense
+//claws = daggers
 class Weapon :public Item {
 private:
 	WeaponTypes Type;
@@ -29,5 +35,7 @@ public:
 
 	WeaponTypes getType();
 	void setType(WeaponTypes w);
+
+	void DisplayDetails();
 
 };

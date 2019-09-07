@@ -79,3 +79,13 @@ WeaponTypes Weapon:: getType() {
 void Weapon::setType(WeaponTypes w) {
 	this->Type = w;
 }
+
+void Weapon::DisplayDetails() {
+	Display();
+	cout << "Level: \t" << this->Level << endl;
+	cout << "Damage: \t" << this->Damage << endl;
+	cout << "Defense: \t" << this->Defense << endl;
+	cout << "Speed: \t" << this->Speed << endl;
+	cout << "Is TwoHanded:\t" << this->TwoHanded << endl;
+	cout << "Range: \t" << this->Range << endl;
+}
