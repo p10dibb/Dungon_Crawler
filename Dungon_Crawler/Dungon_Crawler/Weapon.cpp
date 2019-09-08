@@ -3,6 +3,7 @@
 
 Weapon::Weapon() {
 	Item();
+	this->Type = None;
 	this->Damage = 0;
 	this->Defense = 0;
 	this->TwoHanded = false;
@@ -10,8 +11,9 @@ Weapon::Weapon() {
 	this->Level = 0;
 	this->Range = 0;
 }
-Weapon::Weapon(int Dam, int Def, bool TH, int Sp, int Lvl, int Rng) {
+Weapon::Weapon(int Dam, int Def, bool TH, int Sp, int Lvl, int Rng,WeaponTypes type) {
 	Item();
+	this->Type = type;
 	this->Damage = Dam;
 	this->Defense = Def;
 	this->TwoHanded = TH;

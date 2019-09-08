@@ -15,8 +15,7 @@ private:
 
 
 public:
-	string Names[8] = { "Zombie", "Ghoul", "Skeleton", "Corpse Eater", "Grave Walker", "Pale", "Rotter", "Resurected" };
-
+	
 	Zombie();
 	int getDamage();
 	void setDamage(int i);

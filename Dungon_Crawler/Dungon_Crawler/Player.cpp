@@ -3,7 +3,7 @@
 
 Player::Player() {
 	Creature();
-	this->ArmourRating = 5;
+	
 	this->AttackPower = 5;
 	this->Speed = 5;
 	this->DefensRating = 5;
@@ -21,9 +21,9 @@ Player::Player() {
 	this->Feet = Armor(0, 0, Boots, Light);
 	this->Feet.setName("sandals");
 
-	this->Right = Weapon(0, 0, false, 0, 0, 0);
+	this->Right = Weapon(0, 0, false, 0, 0, 0,None);
 	this->Right.setName("Fist");
-	this->Left = Weapon(0, 0, false, 0, 0, 0);
+	this->Left = Weapon(0, 0, false, 0, 0, 0,None);
 	this->Left.setName("Fist");
 
 	this->FreeSlots = 30;
@@ -32,12 +32,7 @@ Player::Player() {
 
 
 }
-int Player::getArmorRating() {
-	return this->ArmourRating;
-}
-void Player::setArmorRating(int a) {
-	this->ArmourRating = a;
-}
+
 int Player::getAttackPower() {
 	return this->AttackPower;
 }
@@ -187,3 +182,54 @@ void Player::setMoney(int m) {
 
 }
 
+//calculates the players actual speed
+int Player::ActualSpeed() {
+	int speed = 0;
+	int ArmorWeight = this->Head.getWeight() + this->Torso.getWeight() + this->Hands.getWeight + this->Legs.getWeight() + this->Feet.getWeight();
+	
+	if (this->Left.getType() == None) {
+		speed = this->Speed + this->Right.getSpeed() - (ArmorWeight / (this->Strength / 2));
+	}else if(this->Right.getType() == None) {
+		speed = this->Speed + this->Left.getSpeed() - (ArmorWeight / (this->Strength / 2));
+	}
+	else {
+		//two weapons being used 2/3 the speed of both weapons added together so dual wielding is slower but has higher attack and defense
+		speed = this->Speed +( (this->Left.getSpeed()+this->Right.getSpeed())/3 )- (ArmorWeight / (this->Strength / 2));
+	}
+
+	return speed;
+
+}
+//calculates players Actual attack
+int Player::ActualDamage() {
+	int attack = 0;
+
+	//total of all damage items +actual attack power
+	attack = this->Left.getDamage() + Right.getDamage() + this->AttackPower;
+
+}
+//calculates Players actual Defense
+int Player::ActualDefense() {
+	//total of all defensive items
+	return this->DefensRating + this->Head.getDefense() + this->Torso.getDefense() + this->Hands.getDefense() + this->Legs.getDefense() + this->Feet.getDefense() + this->Right.getDefense() + this->Left.getDefense();
+
+}
+
+//players attack
+int Player::Attack() {
+
+	//currently just actual damage  may change later.
+	return this->ActualDamage();
+}
+//damage recieved
+int Player:: RecieveDamage(int damage) {
+
+	int taken = damage - this->ActualDefense();
+	if (taken < 1) {
+		taken = 1;
+	}
+
+	this->setHealth(this->getHealth() - taken);
+	return taken;
+
+}

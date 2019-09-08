@@ -1,8 +1,7 @@
 #pragma once
 
-#include "Creature.h"
-#include "Weapon.h"
-#include "Armor.h"
+#include "Spawner.h"
+
 typedef struct inventorySlot {
 	Item item;
 	int amount;
@@ -12,7 +11,7 @@ class Player : public Creature {
 
 
 private:
-	int ArmourRating;
+
 	int AttackPower;
 	int Speed;
 	int DefensRating;
@@ -37,8 +36,6 @@ public:
 	Player();
 
 
-	int getArmorRating();
-	void setArmorRating(int a);
 	int getAttackPower();
 	void setAttackPower(int a);
 	int getSpeed();
@@ -76,5 +73,19 @@ public:
 
 	void DisplayDetails();
 
+	//calculates the players actual speed
+	int ActualSpeed();
+	//calculates players Actual attack
+	int ActualDamage();
+	//calculates Players actual Defense
+	int ActualDefense();
+
+	//players attack
+	int Attack();
+	//damage recieved
+	int RecieveDamage(int damage);
+
+
+	
 
 };

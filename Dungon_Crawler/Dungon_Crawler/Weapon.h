@@ -19,7 +19,7 @@ private:
 	int Range;
 public:
 	Weapon();
-	Weapon(int Dam, int Def, bool TH, int Sp, int Lvl, int Rng);
+	Weapon(int Dam, int Def, bool TH, int Sp, int Lvl, int Rng, WeaponTypes type);
 	int getDamage();
 	void setDamage(int d);
 	int getDefense();
