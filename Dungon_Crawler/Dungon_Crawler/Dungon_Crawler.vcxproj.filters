@@ -80,5 +80,8 @@
     <ClCompile Include="Zombie.cpp">
       <Filter>Source Files\Creatures</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerGetSet.cpp">
+      <Filter>Source Files\Creatures</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

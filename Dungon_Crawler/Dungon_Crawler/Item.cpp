@@ -4,9 +4,9 @@
 
 
 Item::Item() {
-	this->Name = "";
+	this->Name = "Empty";
 	this->Value = 0;
-	this->Weight = 1;
+	this->Weight = 0;
 	this->StackSize = 1;
 }
 

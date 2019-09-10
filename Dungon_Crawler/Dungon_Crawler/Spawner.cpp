@@ -19,14 +19,14 @@ Zombie Spawner::CreateZombie(int playerLevel) {
 	ret.setMaxHealth(10 * ret.getLevel());
 		
 	//sets base damage, defense, speed and stamina based on its level
-	ret.setDamage((ret.getLevel() / 2) + rand() % ret.getLevel());
-	ret.setDefense((ret.getLevel() / 4) + rand() % (ret.getLevel() / 2));
-	ret.setSpeed((ret.getLevel() / 2) + rand() % ret.getLevel());
+	ret.setDamage((ret.getLevel()+1 / 2) + rand() % ret.getLevel());
+	ret.setDefense((ret.getLevel()+1 / 4) + rand() % (ret.getLevel()+1 / 2));
+	ret.setSpeed((ret.getLevel()+1 / 2) + rand() % ret.getLevel());
 	ret.setStamina(rand() % 5);
 
 	//sets weapon
 	Weapon w = CreateClaws(ret.getLevel());
-	ret.setWeapon = w;
+	ret.setWeapon( w);
 
 	//sets xp drop
 	ret.setXP(ret.getLevel() + (ret.getDamage() + ret.getDefense()+ ret.getSpeed())/3);
@@ -44,7 +44,7 @@ LootDrop Spawner::GenerateZombieLootDrop(Zombie zed) {
 	LootDrop ret;
 	//100% chance of xp drop
 	ret.xp = zed.getXP();
-
+	ret.gold = 0;
 	//50% chance of gold drop
 	if (rand() % 2 == 0) {
 		//gold drop is minimum of 5 and can have upto 5+the amount calculated for xp
@@ -55,7 +55,7 @@ LootDrop Spawner::GenerateZombieLootDrop(Zombie zed) {
 		ret.weapon = zed.getWeapon();
 	}
 	//other drops when added
-	
+	return ret;
 }
 
 //creates a Claws based on the level inputed. should be the creatures level

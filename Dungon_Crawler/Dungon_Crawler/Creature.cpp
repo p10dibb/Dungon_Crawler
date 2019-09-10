@@ -25,8 +25,8 @@ int Creature::getHealth() {
 	return this->Health;
 }
 void Creature::setHealth(int h) {
-	if (h < 1) {
-		h = 1;
+	if (h < 0) {
+		h = 0;
 	}
 	this->Health = h;
 }
