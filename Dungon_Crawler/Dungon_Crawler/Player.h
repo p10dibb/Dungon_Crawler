@@ -3,29 +3,22 @@
 #include "Spawner.h"
 
 typedef struct inventorySlot {
-	Item item;
+	Item* item;
 	int amount = 0;
 }InventorySlot;
 
-class Player : public Creature {
+class Player : public Humanoid {
 
 
 private:
 
-	int AttackPower;
-	int Speed;
-	int DefensRating;
-	int Stamina;
-	int Strength;
+	
 
-	Weapon Left;
-	Weapon Right;
 
-	Armor Head;
-	Armor Torso;
-	Armor Hands;
-	Armor Legs;
-	Armor Feet;
+	Weapon* Left;
+	Weapon* Right;
+
+	
 
 	
 	InventorySlot Inventory[40];
@@ -47,10 +40,19 @@ private:
 	void NextLevel();
 
 	//adds an Item to Inventory
-//	bool addToInventory(Item i);
+	//bool addToInventory(Item *i);
+
+	//Inventory Functions+++++++++
+
+	int ViewInventory(int pos);
+	int EquipInventory(int pos);
+	int UseInventory(int pos);
+	int MoveInventory(int pos);
+	int getFuncInventory(string s);
+	//++++++++++++++++++++++++
 
 public:
-	bool addToInventory(Item i);
+	bool addToInventory(Item *i);
 
 
 
@@ -80,36 +82,23 @@ public:
 
 	void DisplayInventory();
 
+	int InventoryDialogue();
+	
+	int EquipedDialogue();
+
+	void DisplayEquiped();
 
 
 
 
 	//Getter and setters   code in PlayerGetSet.cpp++++++++++++++++
-	int getAttackPower();
-	void setAttackPower(int a);
-	int getSpeed();
-	void setSpeed(int s);
-	int getDefenseRating();
-	void setDefenseRating(int d);
-	int getStamina();
-	void setStamina(int s);
-	int getStrength();
-	void setStrength(int s);
-	Weapon getLeft();
-	int setLeft(Weapon l);
-	Weapon getRight();
-	int setRight(Weapon l);
-	Armor getHead();
-	int setHead(Armor h);
-	Armor getTorso();
-	int setTorso(Armor t);
-	Armor getHands();
-	int setHands(Armor h);
-	Armor getLegs();
-	int setLegs(Armor l);
-	Armor getFeet();
-	int setFeet(Armor f);
-	InventorySlot* getInventory();
+
+	Weapon* getLeft();
+	int setLeft(Weapon* l);
+	Weapon* getRight();
+	int setRight(Weapon* l);
+	
+	//InventorySlot* getInventory();
 	void setInventory(InventorySlot i[40]);
 	int getFreeSlots();
 	void setFreeSlots(int f);

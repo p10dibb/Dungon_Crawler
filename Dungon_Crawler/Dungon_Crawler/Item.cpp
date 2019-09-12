@@ -59,6 +59,7 @@ void Item::setStackSize(int s) {
 }
 
 
-void Item::Display() {
+void Item::DisplayDetails() {
 	cout << "Name: \t" << this->Name << endl << "Value: \t" << this->Value << endl << "Weight: \t" << this->Weight << endl << "StackSize: \t" << this->StackSize << endl;
 }
+

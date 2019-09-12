@@ -15,6 +15,7 @@ private:
 
 
 public:
+	virtual ~Item()=default;
 	Item();
 	Item(string name, int val, int weight, int stacksize);
 	string getName();
@@ -26,7 +27,7 @@ public:
 	int getStackSize();
 	void setStackSize(int s);
 
-	void Display();
+	void DisplayDetails();
 
 
 };

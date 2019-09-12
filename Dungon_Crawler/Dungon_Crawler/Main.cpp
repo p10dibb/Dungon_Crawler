@@ -5,7 +5,8 @@
 void main() {
 
 	Run();
+	
 
-
-
+	system("pause");
+	
 }

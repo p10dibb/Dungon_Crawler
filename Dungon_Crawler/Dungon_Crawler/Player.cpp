@@ -3,29 +3,20 @@
 
 //Default constructor
 Player::Player() {
-	Creature();
+	Humanoid();
 	
-	this->AttackPower = 5;
-	this->Speed = 5;
-	this->DefensRating = 5;
-	this->Stamina = 5;
-	this->Strength = 5;
+	this->setDamage(5) ;
+	this->setSpeed( 5);
+	this->setDefense(5);
+	this->setStamina(5);
+	this->setStrength(5);
 
-	this->Head =  Armor(0, 0, Helmet, Light);
-	this->Head.setName("Hat");
-	this->Torso = Armor(0, 0, Chest, Light);
-	this->Torso.setName("Shirt");
-	this->Legs = Armor(0, 0, Pants, Light);
-	this->Legs.setName("Pants");
-	this->Hands = Armor(0, 0, Gloves, Light);
-	this->Hands.setName("Basic");
-	this->Feet = Armor(0, 0, Boots, Light);
-	this->Feet.setName("sandals");
+	
 
-	this->Right = Weapon(0, 0, false, 0, 0, 0,None);
-	this->Right.setName("Fist");
-	this->Left = Weapon(0, 0, false, 0, 0, 0,None);
-	this->Left.setName("Fist");
+	this->Right = new Weapon(0, 0, false, 0, 0, 0,None);
+	this->Right->setName("Fist");
+	this->Left = new Weapon(0, 0, false, 0, 0, 0,None);
+	this->Left->setName("Fist");
 
 	this->FreeSlots = 40;
 
@@ -38,8 +29,12 @@ Player::Player() {
 	this->CurrentWeight = 0;
 	this->OverWeighted = false;
 
-
-
+	this->LevelUp = 10;
+	this->Inventory;
+	
+	for (int i = 0; i < this->InventorySize; i++) {
+		this->Inventory[i].item = new Item();
+	}
 }
 
 
@@ -50,34 +45,36 @@ void Player::DisplayDetails() {
 	cout << "XP: \t" << this->getXP() << endl;
 	cout << "Health: \t" << this->getHealth() << endl;
 	cout << "Stamina: \t" << this->getStamina() << endl;
-	cout << "Attack: \t" << this->getAttackPower() << endl;
-	cout << "Defense: \t" << this->getDefenseRating() << endl;
+	cout << "Attack: \t" << this->getDamage() << endl;
+	cout << "Defense: \t" << this->getDefense() << endl;
 	cout << "Speed: \t" << this->getSpeed() << endl;
 	cout << "Armor: \t" << endl;
-	cout << "Head: \t" << this->getHead().getName() << endl;
-	cout << "Torso: \t" << this->getTorso().getName() << endl;
-	cout << "Hands: \t" << this->getHands().getName() << endl;
-	cout << "Legs: \t" << this->getLegs().getName() << endl;
-	cout << "Feet: \t" << this->getFeet().getName() << endl;
+	cout << "Head: \t" << this->getHead()->getName() << endl;
+	cout << "Torso: \t" << this->getTorso()->getName() << endl;
+	cout << "Hands: \t" << this->getHands()->getName() << endl;
+	cout << "Legs: \t" << this->getLegs()->getName() << endl;
+	cout << "Feet: \t" << this->getFeet()->getName() << endl;
 	cout << "Weapon: " << endl;
-	cout << "Right: \t" << this->getRight().getName() << endl;
-	cout << "Left: \t" << this->getLeft().getName() << endl;
+	cout << "Right: \t" << this->getRight()->getName() << endl;
+	cout << "Left: \t" << this->getLeft()->getName() << endl;
 }
 
 
 //calculates the players actual speed
 int Player::ActualSpeed() {
 	int speed = 0;
-	int ArmorWeight = this->Head.getWeight() + this->Torso.getWeight() + this->Hands.getWeight() + this->Legs.getWeight() + this->Feet.getWeight();
+	int ArmorWeight = this->getHead()->getWeight() + this->getTorso()->getWeight() + this->getHands()->getWeight() + this->getLegs()->getWeight() + this->getFeet()->getWeight();
 	
-	if (this->Left.getType() == None) {
-		speed = this->Speed + this->Right.getSpeed() - (ArmorWeight / (this->Strength / 2));
-	}else if(this->Right.getType() == None) {
-		speed = this->Speed + this->Left.getSpeed() - (ArmorWeight / (this->Strength / 2));
+	//if onehanded else dual wielding
+	if (this->Left->getType() == None) {
+		speed = this->getSpeed() + this->Right->getSpeed() - (ArmorWeight / (this->getStrength() / 2));
+	}
+	else if(this->Right->getType() == None) {
+		speed = this->getSpeed() + this->Left->getSpeed() - (ArmorWeight / (this->getStrength() / 2));
 	}
 	else {
 		//two weapons being used 2/3 the speed of both weapons added together so dual wielding is slower but has higher attack and defense
-		speed = this->Speed +( (this->Left.getSpeed()+this->Right.getSpeed())/3 )- (ArmorWeight / (this->Strength / 2));
+		speed = this->getSpeed() +( (this->Left->getSpeed()+this->Right->getSpeed())/3 )- (ArmorWeight / (this->getStrength() / 2));
 	}
 
 	return speed;
@@ -88,13 +85,13 @@ int Player::ActualDamage() {
 	int attack = 0;
 
 	//total of all damage items +actual attack power
-	return this->Left.getDamage() + Right.getDamage() + this->AttackPower;
+	return this->Left->getDamage() + Right->getDamage() + this->getDamage();
 	
 }
 //calculates Players actual Defense
 int Player::ActualDefense() {
 	//total of all defensive items
-	return this->DefensRating + this->Head.getDefense() + this->Torso.getDefense() + this->Hands.getDefense() + this->Legs.getDefense() + this->Feet.getDefense() + this->Right.getDefense() + this->Left.getDefense();
+	return this->getDefense() + this->getHead()->getDefense() + this->getTorso()->getDefense() + this->getHands()->getDefense() + this->getLegs()->getDefense() + this->getFeet()->getDefense() + this->Right->getDefense() + this->Left->getDefense();
 
 }
 
@@ -128,17 +125,17 @@ void Player::RecieveLootDrop(lootDrop loot) {
 		this->Money += loot.gold;
 	}
 
-	if (loot.weapon.getType() != None) {
-		cout << "Weapon: " << loot.weapon.getName()<<endl;
+	if (loot.weapon->getType() != None) {
+		cout << "Weapon: " << loot.weapon->getName()<<endl;
 		this->addToInventory(loot.weapon);
 	}
 
-	if (loot.weapon.getType() != Nill) {
+	if (loot.armour.getType() != Nill) {
 		cout << "Armor: " << loot.armour.getName();
-		this->addToInventory(loot.armour);
+		this->addToInventory(&loot.armour);
 	}
 
-	if (this->getXP() <= this->getLevelUp()) {
+	if (this->getXP() >= this->getLevelUp()) {
 		this->NextLevel();
 	}
 
@@ -161,11 +158,11 @@ void Player::NextLevel() {
 		cout << "you have " << points << " remaining what would you like to upgrade?" << endl;
 		cout << "#\tstat\tcurrent level\tDescription" << endl;
 		cout << "1\tMaxHealth\t" << this->getMaxHealth() <<"\tMaximum Health of the player"<< endl;
-		cout << "2\tStrength\t" << this->Strength <<"\tIncreases Carrying capacity and lessens handicap of speed for heavy armour"<< endl;
-		cout << "3\tSpeed\t" << this->Speed << "\tIncreases speed in combat"<<endl;
-		cout << "4\tBase Attack\t" << this->AttackPower <<"\tIncreases Base Damage"<< endl;
-		cout << "5\tBase Defense\t" << this->DefensRating <<"\tIncreases Base Defense"<< endl;
-		cout << "6\tStamina\t" << this->Stamina << "\tCurrently Does nothing"<<endl;
+		cout << "2\tStrength\t" << this->getStrength() <<"\tIncreases Carrying capacity and lessens handicap of speed for heavy armour"<< endl;
+		cout << "3\tSpeed\t" << this->getSpeed() << "\tIncreases speed in combat"<<endl;
+		cout << "4\tBase Attack\t" << this->getDamage() <<"\tIncreases Base Damage"<< endl;
+		cout << "5\tBase Defense\t" << this->getDefense() <<"\tIncreases Base Defense"<< endl;
+		cout << "6\tStamina\t" << this->getStamina() << "\tCurrently Does nothing"<<endl;
 		cout << "Choice: ";
 		cin >> input;
 		if (input == 1) {
@@ -175,19 +172,19 @@ void Player::NextLevel() {
 
 		}
 		else if (input == 2) {
-			this->Strength += 1;
-			this->MaxWeight = this->Strength * 10;
+			this->setStrength(this->getStrength()+1);
+			this->MaxWeight = this->getStrength() * 10;
 			
 			this->setOverWeighted(this->MaxWeight < this->CurrentWeight);			
 		}
 		else if (input == 3) {
-			this->Speed += 1;
+			this->setSpeed(this->getSpeed() + 1);
 		}
 		else if (input == 4) {
-			this->AttackPower += 1;
+			this->setDamage(this->getDamage()+1);
 		}
 		else if (input == 5) {
-			this->DefensRating += 1;
+			this->setDefense(this->getDefense()+1);
 		}
 		else {
 			cout << "Not a valid choice:" << endl;
@@ -202,52 +199,3 @@ void Player::NextLevel() {
 	this->setLevelUp(this->getLevelUp() * 2);
 }
 
-//adds an Item to the players inventory;
-bool Player::addToInventory(Item i) {
-
-	
-
-
-	if (FreeSlots != 0) {
-
-		//checks if there is already a stack of said item and if there is room in the stack for another one
-		for (int j = 0; j < this->getInventorySize(); j++) {
-			if (this->Inventory[j].item.getName() == i.getName() && this->Inventory[j].item.getStackSize() > this->Inventory->amount) {
-				this->Inventory[j].amount += 1;
-
-				this->setCurrentWeight(this->getCurrentWeight() + i.getWeight());
-				
-				this->setOverWeighted(this->getMaxWeight() < this->getCurrentWeight());
-				
-				return true;
-			}
-		}
-		//if not already a stack find next empty slot and add new stack
-		for (int j = 0; j < this->getInventorySize(); j++) {
-			if (this->Inventory[j].amount ==0) {
-				this->Inventory[j].amount = 1;
-				this->Inventory[j].item = i;
-				this->setOverWeighted(this->getMaxWeight() < this->getCurrentWeight());
-				return true;
-			}
-		}
-
-	}
-	else {
-		cout << "inventory Full" << endl;
-		return false;
-	}
-
-
-
-
-}
-
-
-void Player::DisplayInventory() {
-	cout << "#\tItemName\tamount\t" << endl;
-	for (int i = 0; i < this->InventorySize/2; i++) {
-		cout << i << "\t" << this->Inventory[i].item.getName() << "\t" << this->Inventory[i].amount << "\t" << i + this->InventorySize / 2 << "\t" << this->Inventory[i + this->InventorySize / 2].item.getName() << "\t" << this->Inventory[i + this->InventorySize / 2].amount << endl;
-
-	}
-}

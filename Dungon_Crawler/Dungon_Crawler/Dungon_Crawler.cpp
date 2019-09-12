@@ -5,49 +5,15 @@ void Run() {
 	srand(time(NULL));
 	Spawner s;
 	Player player = createPlayer();
-	Weapon w = s.CreateAxe(1);
+	Weapon* w = s.CreateClaws(1);
+	
 
-	Item i = Item("potion", 1, 1, 10);
-	player.addToInventory(w);
-	player.addToInventory(i);
-	player.addToInventory(w);
-	player.addToInventory(i);
-	player.DisplayInventory();
+	
 
 
-
-	//while (w.getLevel() != 1) {
-	//	w = s.CreateAxe(1);
-	//}
-	//player.setRight(w);
-	//
-	//w = s.CreateDagger(1);
-	//while (w.getLevel() != 1) {
-	//	w = s.CreateDagger(1);
-	//}
-	//player.setLeft(w);
-
-	//
-	//player.DisplayDetails();
-	//cout << endl;
 	system("pause");
 
-	//
-
-	//player.DisplayDetails();
-
-
-
-
-	//Zombie z = s.CreateZombie(1);
-	//z.DisplayDetails();
-	//system("pause");
-	//cout << endl;
-
-	//PlayerVsZombieCombat(&player, z);
-	//cout << endl;
-
-	//system("pause");
+	
 }
 
 Player createPlayer() {

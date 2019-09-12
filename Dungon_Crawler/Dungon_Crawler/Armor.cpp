@@ -43,7 +43,7 @@ void Armor::setClass(ArmorClass c) {
 	this->Class = c;
 }
 
-void Armor::Display() {
+void Armor::DisplayDetails() {
 	cout << "Name: " << this->getName() << endl << "Value: " << this->getValue() << endl << "Weight: " << this->getWeight() << endl << "StackSize: " << this->getStackSize() << endl;
 
 	cout << "Defense: " << this->Defense << endl << "Level: " << this->Level << endl << "Type: " << this->Type << endl;

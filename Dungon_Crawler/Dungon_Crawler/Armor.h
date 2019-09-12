@@ -1,7 +1,7 @@
 #pragma once
 #include "Item.h"
 
-enum ArmorClass {  Light, Medium, Heavy };
+enum ArmorClass {  Light, Normal, Heavy };
 enum ArmorType {Nill,Helmet,Chest,Gloves, Pants, Boots};
 
 class Armor :public Item {
@@ -26,5 +26,5 @@ public:
 	void setClass(ArmorClass c);
 
 
-	void Display();
+	void DisplayDetails();
 };

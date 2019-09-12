@@ -1,32 +1,20 @@
-#include "Creature.h"
-#include "Weapon.h"
+#include "Humanoid.h"
 
 
 
-class Zombie : public Creature {
+class Zombie : public Humanoid {
 private:
 	
-	int Damage;
-	int Defense;
-	int Speed;
-	int Stamina;
 
-	Weapon weapon;
+	Weapon* weapon;
 
 
 public:
 	
 	Zombie();
-	int getDamage();
-	void setDamage(int i);
-	int getDefense();
-	void setDefense(int d);
-	int getSpeed();
-	void setSpeed(int s);
-	int getStamina();
-	void setStamina(int s);
-	Weapon getWeapon();
-	void setWeapon(Weapon w);
+	
+	Weapon* getWeapon();
+	void setWeapon(Weapon* w);
 
 	int Attack();
 

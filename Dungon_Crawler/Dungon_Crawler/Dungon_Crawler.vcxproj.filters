@@ -25,6 +25,12 @@
     <Filter Include="Header Files\Creatures">
       <UniqueIdentifier>{15deb450-1734-4c26-a930-7fc14dd9507d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Creatures\Player">
+      <UniqueIdentifier>{23a4149a-5c25-4313-bcd5-99953379de41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Creatures\Player">
+      <UniqueIdentifier>{d2dcc2e3-1c0b-4ed0-9aff-2f76745ef36f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dungon_Crawler.h">
@@ -42,14 +48,20 @@
     <ClInclude Include="Creature.h">
       <Filter>Header Files\Creatures</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files\Creatures</Filter>
-    </ClInclude>
     <ClInclude Include="Spawner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Zombie.h">
       <Filter>Header Files\Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="Humanoid.h">
+      <Filter>Header Files\Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="Potion.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Creatures\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -68,9 +80,6 @@
     <ClCompile Include="Armor.cpp">
       <Filter>Source Files\Items</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Creatures</Filter>
-    </ClCompile>
     <ClCompile Include="Creature.cpp">
       <Filter>Source Files\Creatures</Filter>
     </ClCompile>
@@ -80,8 +89,20 @@
     <ClCompile Include="Zombie.cpp">
       <Filter>Source Files\Creatures</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerGetSet.cpp">
+    <ClCompile Include="Humanoid.cpp">
       <Filter>Source Files\Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Creatures\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerGetSet.cpp">
+      <Filter>Source Files\Creatures\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInventory.cpp">
+      <Filter>Source Files\Creatures\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Potion.cpp">
+      <Filter>Source Files\Items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

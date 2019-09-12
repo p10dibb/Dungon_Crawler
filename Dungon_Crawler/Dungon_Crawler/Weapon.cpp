@@ -83,7 +83,7 @@ void Weapon::setType(WeaponTypes w) {
 }
 
 void Weapon::DisplayDetails() {
-	Display();
+	cout << "Name: \t" << this->getName() << endl << "Value: \t" << this->getValue() << endl << "Weight: \t" << this->getWeight() << endl << "StackSize: \t" << this->getStackSize() << endl;
 	cout << "Level: \t" << this->Level << endl;
 	cout << "Damage: \t" << this->Damage << endl;
 	cout << "Defense: \t" << this->Defense << endl;
