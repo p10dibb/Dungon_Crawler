@@ -1,14 +1,33 @@
-﻿  Dungon_Crawler.cpp
-c:\users\pauld\onedrive\desktop\cpts\gitkracken\dungon_crawler\dungon_crawler\dungon_crawler\dungon_crawler.cpp(5): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Humanoid.cpp
+﻿  Armor.cpp
+  biped.cpp
+  Combat.cpp
+  Creature.cpp
+  Dungon_Crawler.cpp
+c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\dungon_crawler.cpp(5): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Floor.cpp
+  Item.cpp
   Main.cpp
-c:\users\pauld\onedrive\desktop\cpts\gitkracken\dungon_crawler\dungon_crawler\dungon_crawler\main.cpp(5): warning C4326: return type of 'main' should be 'int' instead of 'void'
   Player.cpp
+c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\player.cpp(6): warning C4018: '<': signed/unsigned mismatch
   PlayerGetSet.cpp
   PlayerInventory.cpp
-c:\users\pauld\onedrive\desktop\cpts\gitkracken\dungon_crawler\dungon_crawler\dungon_crawler\playerinventory.cpp(65): warning C4018: '<': signed/unsigned mismatch
-c:\users\pauld\onedrive\desktop\cpts\gitkracken\dungon_crawler\dungon_crawler\dungon_crawler\playerinventory.cpp(122): warning C4018: '<': signed/unsigned mismatch
+c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\playerinventory.cpp(65): warning C4018: '<': signed/unsigned mismatch
+c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\playerinventory.cpp(122): warning C4018: '<': signed/unsigned mismatch
+c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\playerinventory.cpp(324): warning C4018: '<': signed/unsigned mismatch
   Potion.cpp
+  Room.cpp
+c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\doublelinkedlist.h(159): warning C4553: '==': result of expression not used; did you intend '='?
+  c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\doublelinkedlist.h(151): note: while compiling class template member function 'void DoubleLinkedList<Zombie>::removeNode(int)'
+  c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\room.cpp(152): note: see reference to function template instantiation 'void DoubleLinkedList<Zombie>::removeNode(int)' being compiled
+  c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\room.h(13): note: see reference to class template instantiation 'DoubleLinkedList<Zombie>' being compiled
+c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\doublelinkedlist.h(122): warning C4553: '==': result of expression not used; did you intend '='?
+  c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\doublelinkedlist.h(115): note: while compiling class template member function 'void DoubleLinkedList<Zombie>::pop(void)'
+  c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\doublelinkedlist.h(163): note: see reference to function template instantiation 'void DoubleLinkedList<Zombie>::pop(void)' being compiled
+  c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\doublelinkedlist.h(66): note: while compiling class template member function 'DoubleLinkedList<Zombie>::DoubleLinkedList(void)'
+  c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\room.cpp(3): note: see reference to function template instantiation 'DoubleLinkedList<Zombie>::DoubleLinkedList(void)' being compiled
   Spawner.cpp
+  Weapon.cpp
+  Zombie.cpp
   Generating Code...
-  Dungon_Crawler.vcxproj -> C:\Users\pauld\OneDrive\Desktop\cpts\gitKracken\Dungon_Crawler\Dungon_Crawler\Debug\Dungon_Crawler.exe
+  LINK : C:\Users\pauld\OneDrive\Desktop\temp\Dungon_Crawler\Dungon_Crawler\Debug\Dungon_Crawler.exe not found or not built by the last incremental link; performing full link
+  Dungon_Crawler.vcxproj -> C:\Users\pauld\OneDrive\Desktop\temp\Dungon_Crawler\Dungon_Crawler\Debug\Dungon_Crawler.exe

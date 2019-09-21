@@ -31,6 +31,15 @@
     <Filter Include="Source Files\Creatures\Player">
       <UniqueIdentifier>{d2dcc2e3-1c0b-4ed0-9aff-2f76745ef36f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\DataStructures">
+      <UniqueIdentifier>{1dd3399b-3af9-453f-b742-18976355f453}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Level">
+      <UniqueIdentifier>{155238a3-efb4-427b-8f7a-9ef0ea7bdfe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Level">
+      <UniqueIdentifier>{2a6c0349-598f-403b-9d1e-ec99807849eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dungon_Crawler.h">
@@ -54,14 +63,29 @@
     <ClInclude Include="Zombie.h">
       <Filter>Header Files\Creatures</Filter>
     </ClInclude>
-    <ClInclude Include="Humanoid.h">
-      <Filter>Header Files\Creatures</Filter>
-    </ClInclude>
     <ClInclude Include="Potion.h">
       <Filter>Header Files\Items</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\Creatures\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Combat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Header Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="DoublelinkedList.h">
+      <Filter>Header Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="Biped.h">
+      <Filter>Header Files\Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>Header Files\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Floor.h">
+      <Filter>Header Files\Level</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -89,9 +113,6 @@
     <ClCompile Include="Zombie.cpp">
       <Filter>Source Files\Creatures</Filter>
     </ClCompile>
-    <ClCompile Include="Humanoid.cpp">
-      <Filter>Source Files\Creatures</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Creatures\Player</Filter>
     </ClCompile>
@@ -103,6 +124,18 @@
     </ClCompile>
     <ClCompile Include="Potion.cpp">
       <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Combat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Floor.cpp">
+      <Filter>Source Files\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Source Files\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="biped.cpp">
+      <Filter>Source Files\Creatures</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
