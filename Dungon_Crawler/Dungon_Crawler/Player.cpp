@@ -1,9 +1,18 @@
 #include "Player.h"
 
 
+string toLower(string s) {
+	string ret = "";
+	for (int i = 0; i < s.length();i++) {
+		ret = ret + char(tolower(s[i]));
+	
+	}
+	return ret;
+}
+
 //Default constructor
 Player::Player() {
-	Humanoid();
+	Biped();
 	
 	this->setDamage(5) ;
 	this->setSpeed( 5);
@@ -30,7 +39,7 @@ Player::Player() {
 	this->OverWeighted = false;
 
 	this->LevelUp = 10;
-	this->Inventory;
+	this->Inventory;	
 	
 	for (int i = 0; i < this->InventorySize; i++) {
 		this->Inventory[i].item = new Item();
@@ -125,14 +134,20 @@ void Player::RecieveLootDrop(lootDrop loot) {
 		this->Money += loot.gold;
 	}
 
-	if (loot.weapon->getType() != None) {
+
+	if (loot.weapon != NULL) {
 		cout << "Weapon: " << loot.weapon->getName()<<endl;
 		this->addToInventory(loot.weapon);
 	}
 
-	if (loot.armour.getType() != Nill) {
-		cout << "Armor: " << loot.armour.getName();
-		this->addToInventory(&loot.armour);
+	if (loot.armour != NULL) {
+		cout << "Armor: " << loot.armour->getName();
+		this->addToInventory(loot.armour);
+	}
+
+	if (loot.potion != NULL) {
+		cout << "Potion: " << loot.potion->getName();
+		this->addToInventory(loot.potion);
 	}
 
 	if (this->getXP() >= this->getLevelUp()) {
@@ -147,7 +162,7 @@ void Player::NextLevel() {
 	//get 3 upgrade points when you level up
 	int points = 3;
 	int input = 0;
-
+	this->setLevel(this->getLevel() + 1);
 	this->setMaxHealth(this->getMaxHealth() + 10);
 	this->setHealth(this->getMaxHealth());
 	cout << "Congrats you leveled up!! \nMax Health is now: " << this->getMaxHealth() << endl;
@@ -198,4 +213,57 @@ void Player::NextLevel() {
 
 	this->setLevelUp(this->getLevelUp() * 2);
 }
+
+//0=left,1=up,2=right, 3=down
+int Player::move(char  map[][10], int direction) {
+
+	   	 							
+	if (direction == 0&& map[this->getPosition()[0]][this->getPosition()[1]-1]!= '|') {
+		
+		
+		this->setPosition({ this->getPosition()[0],this->getPosition()[1] - 1 });
+	}
+	else if (direction == 2&& map[this->getPosition()[0]][this->getPosition()[1] + 1] != '|') {
+		
+		this->setPosition({ this->getPosition()[0],this->getPosition()[1] + 1 });
+	}
+	else if (direction == 3&& map[this->getPosition()[0]+1][this->getPosition()[1] ] != '-') {
+	
+		this->setPosition({this->getPosition()[0]+1,this->getPosition()[1]});
+	}
+	else if (direction == 1&& map[this->getPosition()[0]-1][this->getPosition()[1]] != '-') {
+		
+		this->setPosition({this->getPosition()[0]-1,this->getPosition()[1]});
+	}
+	return 0;
+
+}
+
+
+int Player::Navigation(char map[][10]) {
+
+	while (1) {
+		char input = '\0';
+		cout << "enter [a,w,d,s] for movement or i for inventory or e to view stats" << endl;
+		input = _getch();
+
+		switch (input) {
+		case 'a': this->move(map, 0); return 0;
+
+		case 'w': this->move(map, 1); return 0;
+
+		case 'd': this->move(map, 2); return 0;
+
+		case 's': this->move(map, 3); return 0;
+
+		case 'i':this->InventoryDialogue(); break;
+
+		case 'e':this->EquipedDialogue(); break;
+
+		}
+
+	}
+
+}
+
 

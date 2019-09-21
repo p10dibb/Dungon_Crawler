@@ -5,8 +5,12 @@ Potion::Potion() {
 	this->Tier = 1;
 	this->Type = Water;
 	this->BaseBooster = 0;
+	this->setStackSize(5);
+
 }
-bool Potion::UseHealth(Humanoid *c){
+
+//the use if it is a health potion
+bool Potion::UseHealth(Creature *c){
 
 	c->setHealth(c->getHealth() + this->Tier*this->BaseBooster);
 	if (c->getHealth() > c->getMaxHealth()) {
@@ -15,18 +19,21 @@ bool Potion::UseHealth(Humanoid *c){
 
 	return true;
 }
-bool Potion::UseSpeedBooster(Humanoid *h) {
+
+//the use if it is a speed potion
+bool Potion::UseSpeedBooster(Creature *h) {
 	h->setSpeed(h->getSpeed() + this->Tier*this->Type);
 	return true;
 }
 
-bool Potion::UseStrengthBooster(Humanoid *p) {
+//the use  if it is a strength potion
+bool Potion::UseStrengthBooster(Creature *p) {
 	p->setStrength(p->getStrength() + this->Tier*this->Type);
 	return true;
 }
 
-
-bool Potion::Use(Humanoid *c) {
+//the general use detects which type of potion and runs the actual use function
+bool Potion::Use(Creature *c) {
 
 	switch (this->Type)
 	{
@@ -42,9 +49,23 @@ bool Potion::Use(Humanoid *c) {
 }
 
 
+//Displays relevent info for the potion
 void Potion::DisplayDetails() {
+	cout << this->getName() << endl;
+	cout << "Value: " << this->getValue()<<endl;
+
+	if (this->Type == Health) {
+		cout << "Restores "<<to_string(this->Tier*this->BaseBooster) << " Health" << endl;
+	}
+	else if (this->Type == Speed) {
+		cout << "increases base speed by " << to_string(this->Tier*this->BaseBooster) << endl;
+	}
+	else if (this->Type == Strength) {
+		cout << "increases base Strength by " << to_string(this->Tier*this->BaseBooster) << endl;
+	}
 
 }
+
 
 PotionTypes Potion::getType() {
 	return this->Type;

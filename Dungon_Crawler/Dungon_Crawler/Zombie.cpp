@@ -3,7 +3,7 @@
 
 
 Zombie::Zombie() {
-	Humanoid();
+	Biped();
 	
 	this->weapon = new Weapon();
 

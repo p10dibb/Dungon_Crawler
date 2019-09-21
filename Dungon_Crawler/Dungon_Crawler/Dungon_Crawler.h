@@ -1,7 +1,6 @@
-#include "Player.h"
+#include "Floor.h"
 
 #include <time.h>
 void Run();
 
 Player createPlayer();
-int PlayerVsZombieCombat(Player* player, Zombie zed);

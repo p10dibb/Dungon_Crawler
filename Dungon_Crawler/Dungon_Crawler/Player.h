@@ -7,7 +7,7 @@ typedef struct inventorySlot {
 	int amount = 0;
 }InventorySlot;
 
-class Player : public Humanoid {
+class Player : public  Biped {
 
 
 private:
@@ -87,6 +87,9 @@ public:
 	int EquipedDialogue();
 
 	void DisplayEquiped();
+	int move(char  map[][10], int direction);
+
+	int Navigation(char map[][10]);
 
 
 
@@ -114,15 +117,11 @@ public:
 	void setOverWeighted(bool w);
 	int getInventorySize();
 	void setInventorySize(int i);
+
 	//+++++++++++++++++++++++++++=++
-
-
-	
-
-
-	
-
-	
 	
 
 };
+
+//converts string to all lowercase
+string toLower(string s);

@@ -1,8 +1,8 @@
-#include "Humanoid.h"
+#include "biped.h"
 
 
 
-class Zombie : public Humanoid {
+class Zombie : public  Biped {
 private:
 	
 

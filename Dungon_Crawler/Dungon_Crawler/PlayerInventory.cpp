@@ -53,7 +53,7 @@ void Player::DisplayInventory() {
 
 //Displays inventory and all of the options
 int Player::InventoryDialogue() {
-	string functions[5] = { "view","equip","use", "move","exit" };
+	array<string,5> functions = { "view","equip","use", "move","exit" };
 	int slot = -1;
 	string func = "";
 	int funcNum = -1;
@@ -62,7 +62,7 @@ int Player::InventoryDialogue() {
 	while (1) {
 		cout << "Enter an option and a position" << endl;
 		cout << "List of Options:[";
-		for (int i = 0; i < functions->length(); i++) {
+		for (int i = 0; i < functions.size(); i++) {
 			cout << functions[i] << "| ";
 		}
 		cout << "]" << endl;
@@ -117,9 +117,9 @@ int Player::InventoryDialogue() {
 
 //takes a string and returns a number corelating to the functions name
 int Player::getFuncInventory(string s) {
-	string functions[5] = { "view","equip","use","move","exit" };
+	array<string, 5> functions = { "view","equip","use","move","exit" };
 
-	for (int i = 0; i < functions->length(); i++) {
+	for (int i = 0; i < functions.size(); i++) {
 		if (functions[i] == s) {
 			return i;
 		}
@@ -145,6 +145,10 @@ int Player::ViewInventory(int pos) {
 			Armor* a = dynamic_cast<Armor*>(this->Inventory[pos].item);
 			a->DisplayDetails();
 		}
+		else if ((typeid(*this->Inventory[pos].item) == typeid(Potion))) {
+			Potion* a = dynamic_cast<Potion*>(this->Inventory[pos].item);
+			a->DisplayDetails();
+		}
 		system("pause");
 
 		return 0;
@@ -160,7 +164,7 @@ int Player::EquipInventory(int pos) {
 		this->DisplayEquiped();
 		Weapon* w = dynamic_cast<Weapon*>(this->Inventory[pos].item);
 		int input = 0;
-		cout << "wold you like to equip right(1) left(1):";
+		cout << "wold you like to equip right(1) left(2):";
 		cin >> input;
 		if (input == 1) {
 		 this->Inventory[pos].item=this->Right;
@@ -232,7 +236,36 @@ int Player::EquipInventory(int pos) {
 
 //use item in slot pos
 int Player::UseInventory(int pos) {
-	//potions and stuff
+	//checker for if an item was used 
+	bool used = false;
+	if  (this->Inventory[pos].amount==0){
+		cout << "slot " << to_string(pos) << "is empty" << endl;
+		return -1;
+
+	}
+	 if ((typeid(*this->Inventory[pos].item) == typeid(Potion))) {
+	Potion* a = dynamic_cast<Potion*>(this->Inventory[pos].item);
+	a->Use(this);
+	used = true;
+
+		}
+	 else {
+		 cout << "not a useable item" << endl;
+	 }
+
+	 //decrements inventory
+	 if (used) {
+		 this->Inventory[pos].amount--;
+		 if (this->Inventory[pos].amount == 0) {
+			 this->Inventory[pos].item = new Item();
+		 }
+	 }
+	 
+	
+	
+
+
+
 	return 0;
 }
 
@@ -262,6 +295,11 @@ int Player::MoveInventory(int pos) {
 
 
 void Player::DisplayEquiped() {
+	cout <<"\t" <<this->getName() << endl;
+	cout << "Health: " << this->getHealth() << "/" << this->getMaxHealth()<<endl;
+	cout << "Level: " << this->getLevel() << endl;
+	cout << "XP: " << this->getXP() << "/" << this->getLevelUp() << endl;
+	
 	cout << "Armor:" << endl;
 	cout << "Head:\t" << this->getHead()->getName() << "\t" << "Level: " << this->getHead()->getLevel()<<endl;
 	cout << "Torso:\t" << this->getTorso()->getName() << "\t" << "Level: " << this->getTorso()->getLevel()<<endl;
@@ -273,3 +311,51 @@ void Player::DisplayEquiped() {
 	cout << "Left Hand:\t" << this->getLeft()->getName() << "\tLevel: " << this->getLeft()->getLevel() << endl;
 
 }
+
+
+
+int Player::EquipedDialogue() {
+	array<string, 8> commands = { "right","left","head","torso","hands","legs","feet","exit" };
+	string input = "";
+	while (1) {
+		system("clear");
+		this->DisplayEquiped();
+		cout << "what would you like to see more info on |";
+		for (int i = 0; i < commands.size(); i++) {
+			cout << commands[i] << "| ";
+		}
+		cout << ":"<<endl;
+
+		cin >> input;
+		input = toLower(input);	
+
+		if (input == commands[0]) {
+			this->Right->DisplayDetails();
+		}
+		else if (input == commands[1]) {
+				this->Left->DisplayDetails();
+			}
+		else if (input == commands[2]) {
+			this->getHead()->DisplayDetails();
+		}
+		else if (input == commands[3]) {
+			this->getTorso()->DisplayDetails();
+		}
+		else if (input == commands[4]) {
+			this->getHands()->DisplayDetails();
+		}
+		else if (input == commands[5]) {
+			this->getLegs()->DisplayDetails();
+		}
+		else if (input == commands[6]) {
+			this->getFeet()->DisplayDetails();
+		}
+		else if (input == commands[7]) {
+			return 0;
+		}
+
+		system("pause");
+		}
+	}
+
+

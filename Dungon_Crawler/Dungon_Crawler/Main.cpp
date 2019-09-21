@@ -1,12 +1,6 @@
 #include "Dungon_Crawler.h"
 
 
-
-void main() {
-
+int main() {
 	Run();
-	
-
-	system("pause");
-	
 }

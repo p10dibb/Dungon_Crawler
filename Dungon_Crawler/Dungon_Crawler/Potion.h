@@ -1,5 +1,5 @@
-
-#include "Humanoid.h"
+#include "Item.h"
+#include "Creature.h"
 
 enum PotionTypes { Water, Health, Speed, Strength };
 
@@ -16,12 +16,12 @@ private:
 
 	int BaseBooster ;
 
-	bool UseHealth(Humanoid *c);
-	bool UseSpeedBooster(Humanoid *h);
-	bool UseStrengthBooster(Humanoid *p);
+	bool UseHealth(Creature *c);
+	bool UseSpeedBooster(Creature *h);
+	bool UseStrengthBooster(Creature *p);
 public:
 	Potion();
-	bool Use(Humanoid *c);
+	bool Use(Creature *c);
 
 	void DisplayDetails();
 

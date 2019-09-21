@@ -3,9 +3,9 @@
 Spawner::Spawner() {
 	
 }
-
-//creates a Zombie based on the level inputed. should be the players level
-Zombie Spawner::CreateZombie(int level, bool forceLevel = false) {
+//
+////creates a Zombie based on the level inputed. should be the players level
+Zombie Spawner::CreateZombie(int level, bool forceLevel ) {
 	Zombie ret;
 	
 	//ransdomly sets name
@@ -18,6 +18,8 @@ Zombie Spawner::CreateZombie(int level, bool forceLevel = false) {
 	else {
 		ret.setLevel((level - 3) + rand() % 6);
 	}
+
+	ret.setPosition({ 1 + rand() % 8, 1 + rand() % 8 });
 	//sets health and max health to 10 times its level
 	ret.setHealth(10 * ret.getLevel());
 	ret.setMaxHealth(10 * ret.getLevel());
@@ -41,9 +43,9 @@ Zombie Spawner::CreateZombie(int level, bool forceLevel = false) {
 }
 
 
-//creates the zombies lootdrop
+////creates the zombies lootdrop
 LootDrop Spawner::GenerateZombieLootDrop(Zombie zed) {
-
+	int chance = 0;
 	LootDrop ret;
 	//100% chance of xp drop
 	ret.xp = zed.getXP();
@@ -53,16 +55,56 @@ LootDrop Spawner::GenerateZombieLootDrop(Zombie zed) {
 		//gold drop is minimum of 5 and can have upto 5+the amount calculated for xp
 		ret.gold = (rand() % zed.getXP()) + 5;
 	}
-	//1% chance of weapon drop
-	if (rand() % 100 == 0) {
+	//50% chance of weapon drop
+	if (rand() % 2 == 0) {
 		ret.weapon = zed.getWeapon();
+	}
+
+	if (rand() % 10 == 0){
+		chance = rand() % 5;
+		int armorClass = (rand() % 3);
+
+		//randomly picks armour piece
+		if (chance == 0) {
+			ret.armour = this->CreateHelmet(zed.getLevel(),(ArmorClass)armorClass);
+		}
+		else if (chance == 1) {
+			ret.armour = this->CreateChest(zed.getLevel(), (ArmorClass)armorClass);
+		}
+		else if (chance == 2) {
+			ret.armour = this->CreateGloves(zed.getLevel(), (ArmorClass)armorClass);
+		}
+		else if (chance == 3) {
+			ret.armour = this->CreatePants(zed.getLevel(), (ArmorClass)armorClass);
+		}
+		else if (chance == 4) {
+			ret.armour = this->CreateBoots(zed.getLevel(), (ArmorClass)armorClass);
+		}
+
+	}
+
+	//20% chance of potion
+	if (rand() % 5 == 0) {
+		chance = rand() % 10;
+
+		//80% chance of health potion
+		if (chance < 8) {
+			ret.potion = this->CreateHealthPotion();
+		}//10% chance of speed booster
+		else if (chance == 8) {
+			ret.potion = this->CreateSpeedPotion();
+		}
+		else if (chance == 9) {
+			ret.potion = this->CreateStrengthPotion();
+		}
+
 	}
 	//other drops when added
 	return ret;
 }
 
-//creates a Claws based on the level inputed. should be the creatures level
-Weapon* Spawner::CreateClaws(int level , bool forceLevel = false) {
+////creates a Claws based on the level inputed. should be the creatures level
+Weapon* Spawner::CreateClaws(int level , bool forceLevel ) {
 	Weapon* ret= new Weapon();
 	ret->setName("Claws");
 	ret->setType(Claw);
@@ -95,7 +137,7 @@ Weapon* Spawner::CreateClaws(int level , bool forceLevel = false) {
 
 
 //creates a sword based on the level inputed. should be the creatures level
-Weapon* Spawner::CreateSword(int level, bool forceLevel = false) {
+Weapon* Spawner::CreateSword(int level, bool forceLevel ) {
 	Weapon* ret = new Weapon();
 
 	ret->setType(Sword);
@@ -144,7 +186,7 @@ Weapon* Spawner::CreateSword(int level, bool forceLevel = false) {
 }
 
 //creates a Dagger based on the level inputed. should be the creatures level
-Weapon* Spawner::CreateDagger(int level, bool forceLevel = false) {
+Weapon* Spawner::CreateDagger(int level, bool forceLevel ) {
 	Weapon* ret=new Weapon();
 
 	//sets level to range between level-3 and level+3
@@ -247,7 +289,7 @@ Weapon* Spawner::CreateAxe(int level, bool forceLevel) {
 }
 
 //creates a shield based on the level inputed. should be the creatures level
-Weapon* Spawner::CreateShield(int level, bool forceLevel = false) {
+Weapon* Spawner::CreateShield(int level, bool forceLevel ) {
 	Weapon* ret=new Weapon();
 
 	//random
@@ -297,8 +339,8 @@ Weapon* Spawner::CreateShield(int level, bool forceLevel = false) {
 }
 
 
-
-Armor* Spawner::CreateHelmet(int level, ArmorClass c,bool forceLevel = false) {
+//Creates a helmet
+Armor* Spawner::CreateHelmet(int level, ArmorClass c,bool forceLevel ) {
 	int classMultiplier = 1;
 	string classType = "";
 	Armor* ret= new Armor();
@@ -360,7 +402,9 @@ Armor* Spawner::CreateHelmet(int level, ArmorClass c,bool forceLevel = false) {
 
 
 }
-Armor* Spawner::CreateChest(int level, ArmorClass c, bool forceLevel = false) {
+
+//Creates a chestplate
+Armor* Spawner::CreateChest(int level, ArmorClass c, bool forceLevel ) {
 	int classMultiplier = 1;
 	string classType = "";
 	Armor* ret=new Armor;
@@ -418,7 +462,9 @@ Armor* Spawner::CreateChest(int level, ArmorClass c, bool forceLevel = false) {
 
 	return ret;
 }
-Armor* Spawner::CreateGloves(int level, ArmorClass c, bool forceLevel = false) {
+
+//Creates a Gloves
+Armor* Spawner::CreateGloves(int level, ArmorClass c, bool forceLevel ) {
 	int classMultiplier = 1;
 	string classType = "";
 	Armor* ret=new Armor();
@@ -477,7 +523,9 @@ Armor* Spawner::CreateGloves(int level, ArmorClass c, bool forceLevel = false) {
 
 
 }
-Armor* Spawner::CreatePants(int level, ArmorClass c, bool forceLevel = false) {
+
+//Creates Pants
+Armor* Spawner::CreatePants(int level, ArmorClass c, bool forceLevel ) {
 	int classMultiplier = 1;
 	string classType = "";
 	Armor* ret=new Armor();
@@ -536,7 +584,9 @@ Armor* Spawner::CreatePants(int level, ArmorClass c, bool forceLevel = false) {
 
 
 }
-Armor* Spawner::CreateBoots(int level, ArmorClass c, bool forceLevel = false) {
+
+//Creates Boots
+Armor* Spawner::CreateBoots(int level, ArmorClass c, bool forceLevel ) {
 	int classMultiplier = 1;
 	string classType = "";
 	Armor* ret=new Armor();
@@ -598,8 +648,19 @@ Armor* Spawner::CreateBoots(int level, ArmorClass c, bool forceLevel = false) {
 
 
 //if random is true it will randomly assign a tier based on the level input else it will make it with the inputed tier
-Potion* Spawner::CreateHealthPotion(bool random = false, int level = 1, int Tier = 1) {
+Potion* Spawner::CreateHealthPotion(bool random , int level, int Tier) {
 	Potion * ret = new Potion();
+	ret->setType(Health);
+	ret->setBaseBooster(20);
+	if (random) {
+		//change later based on level
+		ret->setTier(rand() % 5);
+	}
+	else {
+		ret->setTier(Tier);
+	}
+	ret->setName("Tier " + to_string(ret->getTier()) + "Health Potion");
+
 
 
 
@@ -607,15 +668,35 @@ Potion* Spawner::CreateHealthPotion(bool random = false, int level = 1, int Tier
 }
 
 //if random is true it will randomly assign a tier based on the level input else it will make it with the inputed tier
-Potion* Spawner::CreateSpeedPotion(bool random = false, int level = 1, int Tier = 1) {
+Potion* Spawner::CreateSpeedPotion(bool random , int level , int Tier ) {
 	Potion * ret = new Potion();
+	ret->setType(Speed);
+	ret->setBaseBooster(1);
+	if (random) {
+		//change later based on level
+		ret->setTier(rand() % 5);
+	}
+	else {
+		ret->setTier(Tier);
+	}
+	ret->setName("Tier " + to_string(ret->getTier()) + "Speed Potion");
 
 	return ret;
 }
 
 //if random is true it will randomly assign a tier based on the level input else it will make it with the inputed tier
-Potion* Spawner::CreateStaminaPotion(bool random = false, int level = 1, int Tier = 1) {
+Potion* Spawner::CreateStrengthPotion(bool random , int level , int Tier ) {
 	Potion * ret = new Potion();
+	ret->setType(Strength);
+	ret->setBaseBooster(1);
+	if (random) {
+		//change later based on level
+		ret->setTier(rand() % 5);
+	}
+	else {
+		ret->setTier(Tier);
+	}
+	ret->setName("Tier " + to_string(ret->getTier()) + "Strength Potion");
 
 	return ret;
 }

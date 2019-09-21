@@ -116,27 +116,35 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Armor.h" />
+    <ClInclude Include="Biped.h" />
+    <ClInclude Include="Combat.h" />
     <ClInclude Include="Creature.h" />
     <ClInclude Include="Dungon_Crawler.h" />
-    <ClInclude Include="Humanoid.h" />
+    <ClInclude Include="Floor.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="DoublelinkedList.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Potion.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="Spawner.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Armor.cpp" />
+    <ClCompile Include="biped.cpp" />
+    <ClCompile Include="Combat.cpp" />
     <ClCompile Include="Creature.cpp" />
     <ClCompile Include="Dungon_Crawler.cpp" />
-    <ClCompile Include="Humanoid.cpp" />
+    <ClCompile Include="Floor.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerGetSet.cpp" />
     <ClCompile Include="PlayerInventory.cpp" />
     <ClCompile Include="Potion.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Zombie.cpp" />
