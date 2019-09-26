@@ -55,11 +55,12 @@ LootDrop Spawner::GenerateZombieLootDrop(Zombie zed) {
 		//gold drop is minimum of 5 and can have upto 5+the amount calculated for xp
 		ret.gold = (rand() % zed.getXP()) + 5;
 	}
-	//50% chance of weapon drop
-	if (rand() % 2 == 0) {
+	//10% chance of weapon drop
+	if (rand() % 10 == 0) {
 		ret.weapon = zed.getWeapon();
 	}
 
+	// 10% chance to drop armour
 	if (rand() % 10 == 0){
 		chance = rand() % 5;
 		int armorClass = (rand() % 3);

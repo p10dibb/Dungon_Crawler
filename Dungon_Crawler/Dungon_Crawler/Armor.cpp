@@ -27,6 +27,9 @@ int Armor::getLevel() {
 	return this->Level;
 }
 void Armor::setLevel(int l) {
+	if (l < 1) {
+		l = 1;
+	}
 	this->Level = l;
 }
 ArmorType Armor::getType() {

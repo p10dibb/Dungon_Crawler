@@ -13,16 +13,18 @@ int PlayerVsZombieCombat(Player* player, Zombie zed) {
 	int Damage = 0;
 	int round = 1;
 	while (1) {
-		cout << "round: " << round << " zed health:" << zed.getHealth() << " Player health:" << player->getHealth() << endl;;
-		; round++;
+		cout << "round: " << round <<",Level "<<zed.getLevel()<<" "<< zed.getName()<<" health:" << zed.getHealth() << " Player health:" << player->getHealth() << endl;
+		// zed.DisplayDetails();
+		 round++;
+		 cout << "zombie speed tot: " << ZombieSpeedTot << " player speed tot: " << playerSpeedTot<<endl<<endl;
 		if (ZombieSpeedTot > playerSpeedTot) {
 			cout << zed.getName() << " is attacking" << endl;
-
+			
 			//incriment player speed to see if player gets a turn
 			playerSpeedTot += player->ActualSpeed();
 
 			Damage = player->TakeDamage(zed.Attack());
-			cout << player->getName() << " takes " << Damage << "damage" << endl;
+			cout << player->getName() << " takes " << Damage << "damage" << endl<<endl;
 		}
 		else {
 			cout << player->getName() << " is attacking" << endl;
@@ -31,8 +33,8 @@ int PlayerVsZombieCombat(Player* player, Zombie zed) {
 			ZombieSpeedTot += zed.getSpeed();
 
 			Damage = zed.TakeDamage(zed.Attack());
-			cout << zed.getName() << " takes " << Damage << " damage" << endl;
-
+			cout << zed.getName() << " takes " << Damage << " damage" << endl<<endl;
+			system("pause");
 		}
 
 		if (player->getHealth() <= 0) {

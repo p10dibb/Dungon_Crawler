@@ -31,9 +31,15 @@ public:
 	Node<T>* peek();
 	//returns the node at specified position
 	Node<T>* getNode(int position);
+	
+	T getData(int position);
+	void setData(int position, T data);
+
 
 	//removes the node at set position
 	void removeNode(int position);
+
+
 
 	void clear();
 
@@ -178,4 +184,29 @@ void DoubleLinkedList<T>::removeNode(int position) {
 		this->size--;
 	}
 
+}
+template<class T>
+T DoubleLinkedList<T>::getData(int position) {
+	if (position < this->size) {
+		Node<T>*temp = Head;
+		for (int i = 0; i < position; i++) {
+			temp = temp->getNext();
+
+		}
+		return temp->getData();
+	}
+	//return NULL;
+}
+
+template<class T>
+void DoubleLinkedList<T>::setData(int position, T data) {
+	if (position < this->size) {
+		Node<T>*temp = Head;
+		for (int i = 0; i < position; i++) {
+			temp = temp->getNext();
+
+		}
+		temp->Data = data;
+	}
+	
 }

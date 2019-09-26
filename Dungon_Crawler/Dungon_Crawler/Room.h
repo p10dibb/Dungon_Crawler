@@ -1,5 +1,5 @@
 #include "Combat.h"
-#include "DoublelinkedList.h"
+
 
 class Room {
 
@@ -10,6 +10,8 @@ private:
 	
 	Spawner spawner;
 	Player* player;
+
+	int enemyCount;
 	DoubleLinkedList<Zombie> zeds;
 
 
@@ -29,8 +31,7 @@ public:
 	void setPlayer(Player* p);
 	DoubleLinkedList<Zombie> getZeds();
 	void setZeds(DoubleLinkedList<Zombie> z);
-
-
+	
 
 
 
@@ -40,6 +41,8 @@ public:
 
 	//-1 player dies //0 nothing important  //1 exits left // 2 exits up  // 3 exits right// 4 exits down
 	int playerCollisionCheck();
+	void setEnemyAmt(int a);
+	int getEnemyAmt();
 
 
 

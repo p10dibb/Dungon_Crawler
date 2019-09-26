@@ -7,11 +7,12 @@ template<class T>
 class Node
 {
 
-	T Data;
+	
 	Node* Next;
 	Node* Pre;
 
 public:
+	T Data;
 	Node();
 	Node(T data);
 	void setData(T data);

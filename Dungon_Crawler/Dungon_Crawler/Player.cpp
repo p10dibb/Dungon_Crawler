@@ -15,7 +15,7 @@ Player::Player() {
 	Biped();
 	
 	this->setDamage(5) ;
-	this->setSpeed( 5);
+	this->setSpeed( 2);
 	this->setDefense(5);
 	this->setStamina(5);
 	this->setStrength(5);
@@ -86,6 +86,18 @@ int Player::ActualSpeed() {
 		speed = this->getSpeed() +( (this->Left->getSpeed()+this->Right->getSpeed())/3 )- (ArmorWeight / (this->getStrength() / 2));
 	}
 
+	//if slwed effect is active then decrease speed by 25%
+	if (this->ContainEffect(Slowed)) {
+		speed = speed * .75;
+	}
+	//cuts speed in half if overweighted
+	if (this->OverWeighted) {
+		speed = speed * .5;
+	}
+	//minimum speed is 1
+	if (speed < 1) {
+		speed = 1;
+	}
 	return speed;
 
 }
@@ -106,7 +118,8 @@ int Player::ActualDefense() {
 
 //players attack
 int Player::Attack() {
-
+	cout << "hit any button to attack:" << endl;
+	system("pause");
 	//currently just actual damage  may change later.
 	return this->ActualDamage();
 }
@@ -153,7 +166,7 @@ void Player::RecieveLootDrop(lootDrop loot) {
 	if (this->getXP() >= this->getLevelUp()) {
 		this->NextLevel();
 	}
-
+	system("pause");
 
 }
 

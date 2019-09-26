@@ -87,6 +87,9 @@
     <ClInclude Include="Floor.h">
       <Filter>Header Files\Level</Filter>
     </ClInclude>
+    <ClInclude Include="activeEffects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dungon_Crawler.cpp">
@@ -136,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="biped.cpp">
       <Filter>Source Files\Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="activeEffects.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

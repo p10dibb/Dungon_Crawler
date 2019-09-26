@@ -2,6 +2,7 @@
 
 Room::Room() {
 	this->player = new Player;
+	enemyCount = 0;
 	player->setPosition({ 1,1 });
 	this->Exits[0] = { 5,0 };
 	this->Exits[1] = { 0,5 };
@@ -116,7 +117,10 @@ int Room::RunRoom() {
 
 		results=this->playerCollisionCheck();
 		//if hit exit
-		if (results > 0 && results<= 4) {
+		if (results == -1) {
+			return -1;
+		}
+		else if (results > 0 && results<= 4) {
 			return results;
 		}
 		this->RenderRoom();
@@ -150,7 +154,7 @@ int Room::playerCollisionCheck() {
 			if (result == 0) {
 				this->player->RecieveLootDrop(this->spawner.GenerateZombieLootDrop(this->getZeds().getNode(i)->getData()));
 				this->zeds.removeNode(i+1);
-				
+				this->setEnemyAmt(this->getEnemyAmt() - 1);
 			}
 
 		}
@@ -160,4 +164,14 @@ int Room::playerCollisionCheck() {
 
 
 	return result;
+}
+
+void Room::setEnemyAmt(int a) {
+	if (a < 0) {
+		a = 0;
+	}
+	this->enemyCount = a;
+}
+int Room::getEnemyAmt() {
+	return this->enemyCount;
 }

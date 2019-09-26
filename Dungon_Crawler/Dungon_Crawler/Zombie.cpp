@@ -51,3 +51,16 @@ void Zombie:: DisplayDetails() {
 	cout << "Weapon: " << endl;
 	this->weapon->DisplayDetails();
 }	
+
+int Zombie::ActualSpeed() {
+	int speed = 0;
+	int ArmorWeight = this->getHead()->getWeight() + this->getTorso()->getWeight() + this->getHands()->getWeight() + this->getLegs()->getWeight() + this->getFeet()->getWeight();
+
+	
+		speed = this->getSpeed() + this->weapon->getSpeed() - (ArmorWeight / (this->getStrength() / 2));
+
+
+
+	return speed;
+
+}

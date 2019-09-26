@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="activeEffects.h" />
     <ClInclude Include="Armor.h" />
     <ClInclude Include="Biped.h" />
     <ClInclude Include="Combat.h" />
@@ -132,6 +133,7 @@
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="activeEffects.cpp" />
     <ClCompile Include="Armor.cpp" />
     <ClCompile Include="biped.cpp" />
     <ClCompile Include="Combat.cpp" />

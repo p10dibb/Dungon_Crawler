@@ -1,36 +1,34 @@
-#include "Dungon_Crawler.h"
+	#include "Dungon_Crawler.h"
 
 
 void Run() {
 	srand(time(NULL));
-	Spawner s;
+	/*Spawner s;
 	Player player = createPlayer();
-
-	Room r;
-
-	DoubleLinkedList<Zombie> z;
-	DoubleLinkedList<Zombie> z1;
-	DoubleLinkedList<Zombie> z2;
-	Zombie ze = s.CreateZombie(1);
 	Floor f;
-	ze.setPosition({ 1,2 });
 
-	z.add(ze);
-
-	z1.add(s.CreateZombie(3));
-	z1.add(s.CreateZombie(1));
-	z1.add(s.CreateZombie(1));
-
-	z.add(s.CreateZombie(1));
-	r.setZeds(z);
-
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
+			f.createRoom(i, j);
+		}
+	}
 	f.setPlayer(&player);
-	f.setRoom(r, 0, 0);
-	r.setZeds(z1);
-	f.setRoom(r,1, 1);
-	f.NavigateFloor();
+	f.NavigateFloor();*/
 
+	Creature c;
+	c.setName("tester");
+	c.AddEffect(Burning, 10);
 
+	c.AddEffect(Bleeding, 10);
+
+	c.AddEffect(Swiftness, 10);
+	c.DisplayAllEffects();
+	c.DecrementAllEffects();
+	cout << "ssssssssssssssssssssssss" << endl;
+	c.DisplayAllEffects();
+
+	c.runDamageEffects();
+	cout << c.getHealth() << endl;
 
 
 
