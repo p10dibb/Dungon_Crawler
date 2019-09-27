@@ -90,6 +90,9 @@
     <ClInclude Include="activeEffects.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DamageTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dungon_Crawler.cpp">
@@ -141,6 +144,9 @@
       <Filter>Source Files\Creatures</Filter>
     </ClCompile>
     <ClCompile Include="activeEffects.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageTypes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #pragma once
 #include "Item.h"
-
+#include "DamageTypes.h"
 enum WeaponTypes{None,Sword, Shield, Dagger, Axe, Claw};
 //None is basically nothing
 //sword =med speed, attack, def
@@ -11,7 +11,9 @@ enum WeaponTypes{None,Sword, Shield, Dagger, Axe, Claw};
 class Weapon :public Item {
 private:
 	WeaponTypes Type;
+
 	int Damage;
+	
 	int Defense;
 	bool TwoHanded;
 	int Speed;

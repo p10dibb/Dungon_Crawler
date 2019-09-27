@@ -1,5 +1,5 @@
 	#include "Dungon_Crawler.h"
-
+#include "DamageTypes.h"
 
 void Run() {
 	srand(time(NULL));
@@ -15,23 +15,14 @@ void Run() {
 	f.setPlayer(&player);
 	f.NavigateFloor();*/
 
-	Creature c;
-	c.setName("tester");
-	c.AddEffect(Burning, 10);
+	DoubleLinkedList<DamageType> d;
+	d.add(DamageType());
+	d.add(DamageType(Fire, 20, 10));
+	d.add(DamageType(Blunt, 15, 13));
 
-	c.AddEffect(Bleeding, 10);
-
-	c.AddEffect(Swiftness, 10);
-	c.DisplayAllEffects();
-	c.DecrementAllEffects();
-	cout << "ssssssssssssssssssssssss" << endl;
-	c.DisplayAllEffects();
-
-	c.runDamageEffects();
-	cout << c.getHealth() << endl;
-
-
-
+	for (int i = 0; i < d.Size(); i++) {
+		d.getNode(i)->Data.DisplayDetails();
+	}
 
 
 	system("pause");

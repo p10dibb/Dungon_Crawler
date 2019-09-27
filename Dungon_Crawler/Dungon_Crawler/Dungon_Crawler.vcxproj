@@ -120,6 +120,7 @@
     <ClInclude Include="Biped.h" />
     <ClInclude Include="Combat.h" />
     <ClInclude Include="Creature.h" />
+    <ClInclude Include="DamageTypes.h" />
     <ClInclude Include="Dungon_Crawler.h" />
     <ClInclude Include="Floor.h" />
     <ClInclude Include="Item.h" />
@@ -138,6 +139,7 @@
     <ClCompile Include="biped.cpp" />
     <ClCompile Include="Combat.cpp" />
     <ClCompile Include="Creature.cpp" />
+    <ClCompile Include="DamageTypes.cpp" />
     <ClCompile Include="Dungon_Crawler.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="Item.cpp" />

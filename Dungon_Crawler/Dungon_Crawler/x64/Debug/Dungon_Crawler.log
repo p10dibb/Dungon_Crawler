@@ -1,4 +1,5 @@
-﻿  Player.cpp
-c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\player.cpp(91): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\player.cpp(95): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+﻿  DamageTypes.cpp
+  Dungon_Crawler.cpp
+c:\users\pauld\onedrive\desktop\temp\dungon_crawler\dungon_crawler\dungon_crawler\dungon_crawler.cpp(5): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
   Dungon_Crawler.vcxproj -> C:\Users\pauld\OneDrive\Desktop\temp\Dungon_Crawler\Dungon_Crawler\x64\Debug\Dungon_Crawler.exe
